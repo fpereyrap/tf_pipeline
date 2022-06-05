@@ -44,6 +44,7 @@ jobs:
       working-directory: ${{ github.event.inputs.app }}
     steps:
       - name: backend and provider config
+        working-directory: ${{ github.event.inputs.app }}
         run: |
           pwd
           ls -la
