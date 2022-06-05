@@ -52,5 +52,5 @@ jobs:
           rm provider.tf
           ls -la
           echo "writing secrets to backend step"
-          echo ${{secrets.BACKEND}} > backend.tf
+          echo "${{secrets.BACKEND}}" > backend.tf
           cat backend.tf
