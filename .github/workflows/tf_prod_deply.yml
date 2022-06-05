@@ -22,11 +22,15 @@ on:
         - ./infrastructure/operations-portal
         - ./infrastructure/scheduler
 
+# env:
+#   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY  }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    # environment: ${{ github.event.inputs.environment }}
+    environment: ${{ github.event.inputs.environment }}
 
     steps:
       - uses: actions/checkout@v2
@@ -54,3 +58,13 @@ jobs:
           echo "writing secrets to backend step"
           echo "${{secrets.BACKEND}}" > backend.tf
           cat backend.tf
+          echo "${{secrets.PROVIDER}}" > provider.tf
+          cat provider.tf
+
+      # - name: Configure AWS Credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     role-skip-session-tagging: true
+      #     aws-region: us-east-1
+      #     role-duration-seconds: 900
+      #     role-to-assume: arn:aws:iam::CHANGEACCOUNT:role/iam_github_actions
