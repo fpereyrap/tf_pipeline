@@ -47,6 +47,9 @@ jobs:
         run: |
           pwd
           ls -la
+          cat backend.tf
           rm backend.tf
           rm provider.tf
           ls -la
+          backend.tf < ${{secrets.BACKEND}}
+          cat backend.tf
