@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        description: Select the environment
+        options:
+        - staging
+        - production
+      version:
+        type: string
+        description: Release Version
+      hash:
+        type: string
+        description: Artifact Hash
+      app:
+        type: choice
+        description: App
+        options:
+        - infrastructure/operations-portal
+        - infrastructure/scheduler
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: greet
+        run: | 
+          echo "environment is ${{ github.event.inputs.environment }}"
+          echo "version is ${{ github.event.inputs.version }}"
+          echo "hash is ${{ github.event.inputs.hash }}"
+          echo "app is ${{ github.event.inputs.app }}"
