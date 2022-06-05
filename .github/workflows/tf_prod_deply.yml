@@ -43,8 +43,9 @@ jobs:
     steps:
       - name: backend and provider config
         run: |
+          pwd
           ls -la
-          cd ${{ github.event.inputs.app }}
-          ls -la
-          rm backend.tf
-          rm provider.tf
+          # cd ${{ github.event.inputs.app }}
+          # ls -la
+          # rm backend.tf
+          # rm provider.tf
