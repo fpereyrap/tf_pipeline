@@ -40,9 +40,8 @@ jobs:
         
   pre-config:
     runs-on: ubuntu-latest
-    env: 
-      working-directory: ${{ github.event.inputs.app }}
     steps:
+      - uses: actions/checkout@v1
       - name: backend and provider config
         working-directory: ${{ github.event.inputs.app }}
         run: |
