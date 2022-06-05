@@ -43,6 +43,7 @@ jobs:
     steps:
       - name: backend and provider config
         run: |
+          ls -la
           cd ${{ github.event.inputs.app }}
           ls -la
           rm backend.tf
