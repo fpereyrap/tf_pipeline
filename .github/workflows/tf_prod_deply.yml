@@ -26,7 +26,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    environment: ${{ github.event.inputs.environment }}
+    # environment: ${{ github.event.inputs.environment }}
 
     steps:
       - uses: actions/checkout@v2
@@ -37,3 +37,13 @@ jobs:
           echo "version is ${{ github.event.inputs.version }}"
           echo "hash is ${{ github.event.inputs.hash }}"
           echo "app is ${{ github.event.inputs.app }}"
+        
+  pre-config:
+    runs-on: ubuntu-latest
+    steps:
+      - name: backend and provider config
+        run: |
+          cd ${{ github.event.inputs.app }}
+          ls -la
+          rm backend.tf
+          rm provider.tf
